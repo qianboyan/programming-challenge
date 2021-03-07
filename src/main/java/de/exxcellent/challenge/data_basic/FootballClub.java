@@ -41,6 +41,13 @@ public class FootballClub extends ItemCSV<FootballClub> {
     	System.out.println(output);
     }
     
+    /**
+     * Used to calculate the goal difference of the 2 clubs,
+     * can be extended to calculate such as difference of winning games and losing games
+     * @a refers to first integer number.
+     * @b refers to second integer number.
+     * @return true if the temp difference object in param greater than current obj.
+     */
     public boolean cmpDiff(Integer a, Integer b) {
         Integer this_diff = Math.abs(this.goals - this.goals_allowed);
         Integer current_diff = Math.abs(a - b);
@@ -50,6 +57,11 @@ public class FootballClub extends ItemCSV<FootballClub> {
             return false;
     }
     
+    /**
+     * Used to compare the goals difference of 2 clubs.
+     * @oFootballClub refers to another object of weather day.
+     * @return true if the goal difference object in param greater than current obj.
+     */
     public boolean cmpDiffGoals(FootballClub oFootballClub) {
     	return cmpDiff(oFootballClub.getGoals(), oFootballClub.getGoals_allowed());
     }

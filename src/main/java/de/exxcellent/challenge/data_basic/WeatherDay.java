@@ -37,10 +37,17 @@ public class WeatherDay extends ItemCSV<WeatherDay> {
     
     @Override
     public void printItem() {
-    	String output = String.format("The %d Day with MinTemperatur %f and MaxTemperatur %f", this.day, this.mnT, this.mxT);
+    	String output = String.format("The %d Day with MinTemperatur %.2f °F and MaxTemperatur %.2f °F", this.day, this.mnT, this.mxT);
     	System.out.println(output);
     }
     
+    /**
+     * Used to calculate the temp difference of 2 weather days,
+     * can be extended to calculate such as difference of minT and averageT
+     * @a refers to first float number.
+     * @b refers to second float number.
+     * @return true if the temp difference object in param greater than current obj.
+     */
     public boolean cmpDiff(Float a, Float b) {
         Float this_diff = this.mxT - this.mnT;
         Float current_diff = a - b;
@@ -50,7 +57,12 @@ public class WeatherDay extends ItemCSV<WeatherDay> {
             return false;
     }
     
-    public boolean cmpDiffTemp(WeatherDay oWeatherDay) {
+    /**
+     * Used to compare the temperature difference of 2 weather days.
+     * @oWeatherDay refers to another object of weather day.
+     * @return true if the temp difference object in param greater than current obj.
+     */
+    public boolean cmpDiffTempWith(WeatherDay oWeatherDay) {
     	return cmpDiff(oWeatherDay.getMxT(), oWeatherDay.getMnT());
     }
     

@@ -3,7 +3,7 @@ package de.exxcellent.challenge;
 import de.exxcellent.challenge.data_basic.FootballClub;
 import de.exxcellent.challenge.data_basic.WeatherDay;
 import de.exxcellent.challenge.data_container.WeatherDayContainer;
-import de.exxcellent.challenge.data_container.FootballClubContainer;
+// import de.exxcellent.challenge.data_container.FootballClubContainer;
 
 import de.exxcellent.challenge.utilities.WeatherDayCSVParser;
 import de.exxcellent.challenge.utilities.FootballClubCSVParser;
@@ -14,6 +14,8 @@ import de.exxcellent.challenge.utilities.FootballClubCSVParser;
  * design. Read: create your own classes and packages as appropriate.
  *
  * @author Benjamin Schmid <benjamin.schmid@exxcellent.de>
+ * @version changed by Boyan Qian
+ * @date 07.03.2021
  */
 public final class App {
     private static String sWeatherCSVPath = "src/main/resources/de/exxcellent/challenge/weather.csv";
@@ -26,13 +28,13 @@ public final class App {
     	WeatherDayCSVParser hWeatherDay = new WeatherDayCSVParser(sWeatherCSVPath);
         WeatherDayContainer cWeatherDay = hWeatherDay.toContainer();
         WeatherDay oWeatherDay = cWeatherDay.findObjWithMinDiffTemp();
-        System.out.println("Day with smallest temperature spread : " + oWeatherDay.getDay());
+        System.out.println(String.format("Day %d in this month is with minimum temperature difference.", oWeatherDay.getDay()));
         
         FootballClubCSVParser hFootballClub = new FootballClubCSVParser(sFootballCSVPath);
-        FootballClubContainer cFootballClub = hFootballClub.toContainer();
-        FootballClub oFootballClub = cFootballClub.findObjWithMinDiffGoals();
-        System.out.println("Team with smallest goal spread       : " + oFootballClub.getTeam());
+        FootballClub oFootballClub = hFootballClub.toContainer().findObjWithMinDiffGoals();
+        System.out.println(String.format("Team %s has the minimum goal spread.", oFootballClub.getTeam()));
         
+        // some other functionalities can also be used.
         cWeatherDay.getSize();
         oWeatherDay.printItem();
         oFootballClub.printItem();

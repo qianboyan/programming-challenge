@@ -14,15 +14,18 @@ public class WeatherDayContainer extends ItemCSVContainer<WeatherDay>{
         this.data = data;
     }
 
+    /**
+     * Used to find the day with min temperature difference.
+     * @return weatherday object.
+     */
     public WeatherDay findObjWithMinDiffTemp() {
     	Iterator<WeatherDay> iter = this.data.iterator();
     	WeatherDay ObjWithMinDiff = iter.next();
         while (iter.hasNext()) {
         	WeatherDay nextObj = iter.next();
-            if (nextObj.cmpDiffTemp(ObjWithMinDiff))
+            if (nextObj.cmpDiffTempWith(ObjWithMinDiff))
             	ObjWithMinDiff = nextObj;
         }
-
         return ObjWithMinDiff;        
 	}
     

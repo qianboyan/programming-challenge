@@ -14,6 +14,10 @@ public class FootballClubContainer extends ItemCSVContainer<FootballClub>{
         this.data = data;
     }
 
+    /**
+     * Used to find the club with min goals/goals_allowed difference.
+     * @return footballclub object.
+     */
     public FootballClub findObjWithMinDiffGoals() {
     	Iterator<FootballClub> iter = this.data.iterator();
     	FootballClub ObjWithMinDiff = iter.next();
@@ -22,7 +26,6 @@ public class FootballClubContainer extends ItemCSVContainer<FootballClub>{
             if (nextObj.cmpDiffGoals(ObjWithMinDiff))
             	ObjWithMinDiff = nextObj;
         }
-
         return ObjWithMinDiff;        
 	}
 }

@@ -10,6 +10,10 @@ public class WeatherDayCSVParser extends CSVParser<WeatherDay>{
     	super(filename, WeatherDay.class);
     }
     
+    /**
+     * Used to create data container.
+     * @return data container.
+     */
     public WeatherDayContainer toContainer() {
     	WeatherDayContainer cWeatherDay = new WeatherDayContainer(super.toArrayList());
         return cWeatherDay; 
