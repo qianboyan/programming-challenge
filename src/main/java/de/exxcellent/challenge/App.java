@@ -9,6 +9,7 @@ package de.exxcellent.challenge;
 public final class App {
 
     /**
+     * Date: 07.03.2021
      * This is the main entry method of your program.
      * @param args The CLI arguments passed
      */
