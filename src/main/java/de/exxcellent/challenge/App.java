@@ -2,8 +2,6 @@ package de.exxcellent.challenge;
 
 import de.exxcellent.challenge.data_basic.FootballClub;
 import de.exxcellent.challenge.data_basic.WeatherDay;
-import de.exxcellent.challenge.data_container.WeatherDayContainer;
-// import de.exxcellent.challenge.data_container.FootballClubContainer;
 
 import de.exxcellent.challenge.utilities.WeatherDayCSVParser;
 import de.exxcellent.challenge.utilities.FootballClubCSVParser;
@@ -26,19 +24,17 @@ public final class App {
      */
     public static void main(String... args) {    
     	WeatherDayCSVParser hWeatherDay = new WeatherDayCSVParser(sWeatherCSVPath);
-        WeatherDayContainer cWeatherDay = hWeatherDay.toContainer();
-        WeatherDay oWeatherDay = cWeatherDay.findObjWithMinDiffTemp();
+        WeatherDay oWeatherDay = hWeatherDay.toContainer().findObjWithMinDiffTemp();
         System.out.println(String.format("Day %d in this month is with minimum temperature difference.", oWeatherDay.getDay()));
         
         FootballClubCSVParser hFootballClub = new FootballClubCSVParser(sFootballCSVPath);
         FootballClub oFootballClub = hFootballClub.toContainer().findObjWithMinDiffGoals();
         System.out.println(String.format("Team %s has the minimum goal spread.", oFootballClub.getTeam()));
         
+        
         // some other functionalities can also be used.
-        cWeatherDay.getSize();
         oWeatherDay.printItem();
         oFootballClub.printItem();
-        
         
     }
 }
